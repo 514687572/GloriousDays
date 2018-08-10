@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.stip.net</groupId>
+		<artifactId>GloriousDays-MS</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	<groupId>com.stip.net</groupId>
+	<artifactId>GloriousDays-User</artifactId>
+	<version>0.0.1</version>
+	<name>GloriousDays-User</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+		<!-- MyBatis -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.514687572</groupId>
+			<artifactId>STIP-generator</artifactId>
+			<version>1.0.5</version>
+		</dependency>
+
+		<!-- Mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>1.3.6</version>
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.1.35</version>
+					</dependency>
+					<dependency>
+						<groupId>com.github.514687572</groupId>
+						<artifactId>STIP-generator</artifactId>
+						<version>1.0.5</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<!--配置文件的路径 -->
+					<configurationFile>${basedir}/src/main/resources/generatorConfig.xml</configurationFile>
+					<overwrite>true</overwrite>
+				</configuration>
+			</plugin>
+			<!--指定默认启动类 -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.stip.net.user.GloriousDaysUserApplication</mainClass>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<packaging>war</packaging>
+</project>
